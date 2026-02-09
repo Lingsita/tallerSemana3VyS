@@ -1,5 +1,5 @@
 ---
-title: Diccionario
+title: Documentation EDA Ask A Manager Salary Survey
 ---
 
 # Diccionario de Datos – Ask A Manager Salary Survey 2021
