@@ -76,7 +76,7 @@ Cargar todo como texto inicialmente.
 
 Renombrar columnas desde los nombres originales a los nombres modelados en español.
 
-Ejemplo: Timestamp → fecha_respuesta, Annual salary → salario_anual_raw, etc.
+Ejemplo: Annual salary → salario_anual_raw, etc.
 
 Mantener por un tiempo los “_raw” para auditoría.
 
@@ -120,13 +120,7 @@ percentiles (p1, p50, p99) para detectar outliers/errores de digitación.
 
 ### G. Estandarización geográfica
 
-pais: aplicar una tabla de mapeo (US, USA, United States → US, etc.).
-
-estado_region y ciudad:
-
-limpieza básica (trim),
-
-opcional: diccionario de corrección de typos para ciudades (si lo necesitan para análisis por ciudad).
+pais: aplicar una tabla de mapeo (US, USA, United States → US, etc.), igualmente para estado_region y ciudad ylimpieza básica (trim)
 
 ### H. Transformación de experiencia (rangos → numérico)
 
