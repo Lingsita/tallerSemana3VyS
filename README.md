@@ -62,77 +62,49 @@ description: fuente que nos habla de los sueldos que tienen profesionales en dif
 
 ### A. Obtención y versionado del dataset
 
-Descargar el CSV desde la fuente que use el equipo (por ejemplo, Kaggle o el link público asociado a la encuesta 2021). Guardarlo como:
+Descargar el CSV desde la fuente, se puede revisar el formulario en [Formulario Encuesta](https://www.askamanager.org/2021/04/how-much-money-do-you-make-4.html)  y los datos quedan alojados en un [Google Sheets](https://docs.google.com/spreadsheets/d/1IPS5dBSGtwYVbjsfbaMCYIWnOuRmJcbequohNxCyGVw/edit?resourcekey#gid=1625408792) público que se actualiza constantemente. Hacer una copia del mismo, en Google drive se versionan automaticamente los cambios y tiene integracion directa a Looker Studio.
 
-data/raw/ask_a_manager_salary_survey_2021.csv
+Registrar:
 
-No sobrescribir el archivo anterior: crear una carpeta por fecha de carga, por ejemplo:
+- Fecha de descarga
+- Fuente
+- Tamaño (filas/columnas) para trazabilidad.
 
-data/raw/2026-02-08/ask_a_manager_salary_survey_2021.csv
+### B. Carga y estandarización inicial
 
-Registrar en un CHANGELOG.md:
+Cargar todo como texto inicialmente.
 
-fecha de descarga, fuente, tamaño (filas/columnas), y hash (md5/sha1) para trazabilidad.
-
-### B. Carga y estandarización inicial (staging)
-
-Leer el CSV asegurando encoding (UTF-8) y que no se infieran mal los tipos:
-
-Cargar todo como texto inicialmente (excepto que lo controlen explícitamente).
-
-Renombrar columnas desde los nombres originales a los nombres modelados en español (diccionario fijo).
+Renombrar columnas desde los nombres originales a los nombres modelados en español.
 
 Ejemplo: Timestamp → fecha_respuesta, Annual salary → salario_anual_raw, etc.
 
 Mantener por un tiempo los “_raw” para auditoría.
 
-### C. Limpieza de texto (todas las variables string)
+### C. Limpieza de texto
 
 Para cada campo texto/categórico:
 
-trim() (quitar espacios al inicio/fin),
+- Quitar espacios al inicio/fin con trim()
 
-colapsar espacios múltiples,
+- Colapsar espacios múltiples
 
-normalizar comillas raras,
+- Normalizar comillas raras
 
-estandarizar nulos: "", "NA", "N/A" → NULL.
+- Estandarizar nulos: "", "NA", "N/A" → NULL.
 
 ### D. Parseo de fecha
-
-Convertir fecha_respuesta a datetime:
-
-si viene en formato tipo 4/27/2021 11:02, parsear con formato mes/día/año.
-
-Validar:
-
-% de fechas nulas (debería ser ~0),
-
-rango de fechas esperado (2021 principalmente).
 
 ### E. Normalización de moneda
 
 Crear moneda como:
-
 si Currency está en lista estándar (USD, GBP, EUR, etc.), usarla;
-
 si Currency indica “Other”, usar Currency - other;
-
 aplicar upper() y trimming.
-
-(Opcional) Validar contra catálogo:
-
-monedas desconocidas quedan como moneda = 'UNKNOWN' y se documentan en un reporte de calidad.
+Si no se encuentra la moneda aplica el valor tal como viene de la fuente.
 
 ### F. Parseo numérico de salario y compensación extra
 
 Crear salario_anual desde salario_anual_raw:
-
-remover comas ,,
-
-remover símbolos ($, £, etc.) si existen,
-
-convertir a número.
 
 Crear compensacion_extra_anual desde compensacion_extra_anual_raw con la misma lógica.
 
@@ -205,13 +177,9 @@ calcular salario_usd, comp_total_usd.
 guardar en metadatos la fecha de la tasa (para reproducibilidad).
 
 ### L. Salida final (analytics-ready)
+Generar un reporte de calidad: 
+- Cantidad de Registros/Encuestas
+- Ubicación Geográfica
+- Promedio Salarios por Industria
+- Outliers de salario
 
-Generar un reporte de calidad:
-
-nulos por columna,
-
-top valores por categóricas,
-
-conteo de monedas,
-
-outliers de salario.
