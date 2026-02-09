@@ -1,8 +1,11 @@
 ---
-title: Documentation EDA Ask A Manager Salary Survey
+title: EDA Ask A Manager Salary Survey Documentation
+description: fuente que nos habla de los sueldos que tienen profesionales en diferentes disciplinas (principalmente en Estados Unidos) y estos datos son recolectados por “Ask a Manager”, pueden revisar el formulario en 
+https://www.askamanager.org/2021/04/how-much-money-do-you-make-4.html y los datos quedan alojados en un Google Sheets público que se actualiza constantemente:  
+https://docs.google.com/spreadsheets/d/1IPS5dBSGtwYVbjsfbaMCYIWnOuRmJcbequohNxCyGVw/edit?resourcekey#gid=1625408792  
 ---
 
-# Diccionario de Datos – Ask A Manager Salary Survey 2021
+# Diccionario de Datos
 
 ## Variables originales
 
