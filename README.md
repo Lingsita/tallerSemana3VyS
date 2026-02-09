@@ -1,3 +1,7 @@
+---
+title: Diccionario
+---
+
 # Diccionario de Datos – Ask A Manager Salary Survey 2021
 
 ## Variables originales
