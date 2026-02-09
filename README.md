@@ -8,30 +8,28 @@ title: Documentation EDA Ask A Manager Salary Survey
 
 | Variable (original) | Tipo | Descripción |
 |---------------------|------|-------------|
-| Timestamp | Fecha/Hora (texto) | Momento en que la persona envió la respuesta al formulario. |
 | How old are you? | Categórica (texto) | Rango de edad autodeclarado de la persona encuestada. |
-| Industry | Categórica (texto) | Industria en la que trabaja la persona. |
+| What industry do you work in? | Categórica (texto) | Industria en la que trabaja la persona. |
 | Job title | Texto libre | Cargo o puesto desempeñado por la persona. |
-| Additional context on job title | Texto libre | Información adicional o aclaraciones sobre el cargo. |
-| Annual salary | Numérica (texto) | Salario anual reportado, usualmente con separadores. |
-| Other monetary comp | Numérica (texto) | Compensación monetaria adicional anual. |
-| Currency | Categórica | Moneda principal del salario reportado. |
-| Currency - other | Texto | Moneda especificada manualmente cuando no está en la lista. |
-| Additional context on income | Texto libre | Aclaraciones adicionales sobre el ingreso. |
-| Country | Categórica | País donde trabaja la persona. |
-| State | Categórica | Estado, provincia o región. |
-| City | Texto | Ciudad reportada por la persona. |
-| Overall years of professional experience | Categórica | Rango de experiencia profesional total. |
-| Years of experience in field | Categórica | Rango de experiencia en el campo específico. |
-| Highest level of education completed | Categórica | Máximo nivel educativo alcanzado. |
-| Gender | Categórica | Género autodeclarado. |
-| Race | Categórica | Raza o etnicidad autodeclarada. |
+| If your job title needs additional context, please clarify here: | Texto libre | Información adicional o aclaraciones sobre el cargo. |
+| What is your annual salary? (You'll indicate the currency in a later question. If you are part-time or hourly, please enter an annualized equivalent -- what you would earn if you worked the job 40 hours a week, 52 weeks a year.) | Numérica (texto) | Salario anual reportado, usualmente con separadores. |
+| How much additional monetary compensation do you get, if any (for example, bonuses or overtime in an average year)? Please only include monetary compensation here, not the value of benefits. | Numérica (texto) | Compensación monetaria adicional anual. |
+| Please indicate the currency | Categórica | Moneda principal del salario reportado. |
+| If "Other," please indicate the currency here: | Texto | Moneda especificada manualmente cuando no está en la lista. |
+| If your income needs additional context, please provide it here: | Texto libre | Aclaraciones adicionales sobre el ingreso. |
+| What country do you work in? | Categórica | País donde trabaja la persona. |
+| If you're in the U.S., what state do you work in? | Categórica | Estado, provincia o región. |
+| What city do you work in? | Texto | Ciudad reportada por la persona. |
+| How many years of professional work experience do you have overall? | Categórica | Rango de experiencia profesional total. |
+| How many years of professional work experience do you have in your field? | Categórica | Rango de experiencia en el campo específico. |
+| What is your highest level of education completed? | Categórica | Máximo nivel educativo alcanzado. |
+| What is your gender? | Categórica | Género autodeclarado. |
+| What is your race? (Choose all that apply.) | Categórica | Raza o etnicidad autodeclarada. |
 
 ## Variables modeladas
 
 | Variable (modelada) | Tipo | Descripción |
 |--------------------|------|-------------|
-| fecha_respuesta | datetime | Fecha y hora de respuesta parseada correctamente. |
 | grupo_edad | categórica | Rango de edad estandarizado. |
 | industria | categórica | Industria normalizada. |
 | titulo_cargo | texto | Título del cargo limpio. |
