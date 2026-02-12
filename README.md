@@ -120,7 +120,7 @@ percentiles (p1, p50, p99) para detectar outliers/errores de digitación.
 
 ### G. Estandarización geográfica
 
-pais: aplicar una tabla de mapeo (US, USA, United States → US, etc.), igualmente para estado_region y ciudad ylimpieza básica (trim)
+pais: aplicar una tabla de mapeo (US, USA, United States → US, etc.), igualmente para estado_region y ciudad y limpieza básica (trim)
 
 ### H. Transformación de experiencia (rangos → numérico)
 
@@ -142,38 +142,20 @@ Documentar claramente la regla para “+” (importante para replicabilidad).
 
 educacion_nivel: limpieza básica.
 
-educacion_ordinal: definir un mapeo fijo en un archivo de configuración (ej. YAML/JSON) para que no quede “hardcodeado” sin control.
-
 ### J. Género y raza/etnicidad
 
-genero:
-
-mapear variantes a un set controlado,
-
-conservar un genero_raw si necesitan trazabilidad.
-
-raza_etnicidad:
-
-mismo enfoque (map + raw),
-
-recomendar reportar agregado para evitar categorías con muy pocos registros (privacidad / robustez estadística).
+genero: se utilizaron valores en formulario
 
 ### K. Variables derivadas finales
 
 Calcular comp_total_anual = salario_anual + compensacion_extra_anual.
 
-(Opcional internacional) Si convierten a USD:
-
-usar una tabla fx_rates versionada (fecha, moneda, tasa_a_usd) y unir por moneda;
-
 calcular salario_usd, comp_total_usd.
-
-guardar en metadatos la fecha de la tasa (para reproducibilidad).
 
 ### L. Salida final (analytics-ready)
 Generar un reporte de calidad: 
 - Cantidad de Registros/Encuestas
 - Ubicación Geográfica
 - Promedio Salarios por Industria
-- Outliers de salario
+- Remover Outliers de salario
 
